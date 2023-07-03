@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(urlPatterns = {"/SiteDeHotel"})
+@WebServlet(urlPatterns = {"/SiteDeHotel, /index.jsp"})
 public class DefaultController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
@@ -66,7 +66,7 @@ public class DefaultController extends HttpServlet {
     	// Login
     	if(request.getParameter("Ok") != null) {
     		String login = request.getParameter("email");
-    		String senha = request.getParameter("Senha");
+    		String senha = request.getParameter("senha");
     		if(login == null) {
     			err.add("Login inválido!");
     		}
@@ -88,19 +88,20 @@ public class DefaultController extends HttpServlet {
 	    				switch(papel) {
 	    					case "ADM":
 	    						request.getSession().setAttribute("usuario", "ADM");
-	    						response.sendRedirect("/admin/");
+	    						RequestDispatcher rd = request.getRequestDispatcher("/admin/index.jsp");
+	    						rd.forward(request, response);
 	    						break;
 	    					case "HOT":
 	    						HotelDAO h = new HotelDAO();
 	    						Hotel_Beans hotel = h.Get(login);
 	    						request.getSession().setAttribute("usuario", hotel);
-	    						response.sendRedirect("/hotel/");
+	    						response.sendRedirect("/hotel/index.jsp");
 	    						break;
 	    					case "SIT":
 	    						SiteDAO s = new SiteDAO();
 	    						Site_Reservas_Beans site = s.Get(login);
 	    						request.getSession().setAttribute("usuario", site);
-	    						response.sendRedirect("/site/");
+	    						response.sendRedirect("/site/index.jsp");
 	    						break;
 	    					default:
 	    						err.add("Inconsistência de autorização");
@@ -114,6 +115,7 @@ public class DefaultController extends HttpServlet {
     		}
     	}
     	else {
+    		System.out.println(err);
     		request.getSession().invalidate();
 
     		request.setAttribute("mensagens", err);

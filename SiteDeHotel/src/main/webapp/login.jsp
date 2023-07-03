@@ -20,7 +20,7 @@
                 </ul>
             </div>
         </c:if>
-        <form method="post" action="doLogin.jsp">
+        <form method="post" action="index.jsp">
             <table>
                 <tr>
                     <th>Login: </th>
@@ -33,7 +33,7 @@
                 </tr>
                 <tr>
                     <td colspan="2"> 
-                        <input type="submit" name="bOK" value="Entrar"/>
+                        <input type="submit" name="Ok" value="Entrar"/>
                     </td>
                 </tr>
             </table>
