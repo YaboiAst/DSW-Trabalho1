@@ -10,6 +10,7 @@ import br.ufscar.dc.dsw.domain.Site_Reservas_Beans;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.ArrayList;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -131,7 +132,16 @@ public class DefaultController extends HttpServlet {
     
     private void lista(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        List<Hotel_Beans> listaHoteis = hotelDao.GetList();
+    	List<Hotel_Beans> listaHoteis = new ArrayList<>();
+    	String filtro = request.getAttribute("cidade").toString();
+    	
+    	if(filtro != null ) {
+    		listaHoteis = hotelDao.GetByCity(filtro);
+    	}
+    	else {
+    		listaHoteis = hotelDao.GetList();
+    	}
+         
         request.setAttribute("hoteis", listaHoteis);
         request.setAttribute("contextPath", request.getContextPath().replace("/", ""));
         RequestDispatcher dispatcher = request.getRequestDispatcher("/listaHoteis.jsp");
