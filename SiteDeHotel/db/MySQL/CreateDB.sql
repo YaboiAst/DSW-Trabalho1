@@ -4,8 +4,7 @@ CREATE DATABASE Trab1;
 USE Trab1;
 
 CREATE TABLE LOGIN(
-	--id bigint not null auto_increment,
-	email varchar(256),
+	email varchar(256) not null,
 	senha varchar(50),
 	nome varchar(256),
 	papel char(3), -- ADM, HOT ou SIT

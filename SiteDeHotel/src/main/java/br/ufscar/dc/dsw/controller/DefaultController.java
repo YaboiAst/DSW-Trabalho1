@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(urlPatterns = "/index.jsp, /login.jsp")
+@WebServlet(urlPatterns = {"/SiteDeHotel"})
 public class DefaultController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	

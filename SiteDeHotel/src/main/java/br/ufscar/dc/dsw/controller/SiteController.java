@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(urlPatterns = "/site/*.jsp")
+@WebServlet(urlPatterns = "/site/*")
 public class SiteController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
