@@ -1,4 +1,4 @@
-package main.java.br.ufscar.dc.dsw.domain;
+package br.ufscar.dc.dsw.domain;
 
 public class Hotel_Beans extends Cliente_Beans {
 	private String cnpj;
