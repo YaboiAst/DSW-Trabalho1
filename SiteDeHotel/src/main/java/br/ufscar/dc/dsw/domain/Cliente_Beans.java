@@ -1,4 +1,4 @@
-package model;
+package main.java.br.ufscar.dc.dsw.domain;
 
 public class Cliente_Beans {
 	private String email;
@@ -25,7 +25,6 @@ public class Cliente_Beans {
 	}
 	public Cliente_Beans() {
 		super();
-		
 	}
 	public Cliente_Beans(String email, String senha, String nome) {
 		super();

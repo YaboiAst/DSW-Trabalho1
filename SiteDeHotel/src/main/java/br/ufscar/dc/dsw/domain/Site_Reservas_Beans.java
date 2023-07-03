@@ -1,4 +1,4 @@
-package model;
+package main.java.br.ufscar.dc.dsw.domain;
 
 public class Site_Reservas_Beans extends Cliente_Beans {
 	private String url;
