@@ -4,19 +4,12 @@ CREATE DATABASE Trab1;
 USE Trab1;
 
 CREATE TABLE LOGIN(
-	id bigint not null auto_increment,
+	--id bigint not null auto_increment,
 	email varchar(256),
 	senha varchar(50),
-	papel char(3),
-	PRIMARY KEY(id)
-);
-	
--- Precisa dessa tabela mesmo?  
-CREATE TABLE ADMIN(
-	admid bigint not null auto_increment,
-	userid bigint not null,
-	PRIMARY KEY(admid),
-	FOREIGN KEY(userid) REFERENCES LOGIN(id)
+	nome varchar(256),
+	papel char(3), -- ADM, HOT ou SIT
+	PRIMARY KEY(email)
 );
 
 INSERT INTO LOGIN(email, senha, papel) 
@@ -27,29 +20,27 @@ VALUES(
 );
 
 CREATE TABLE HOTEL(
-	userid bigint not null, 
-	cnpj char(18), 
-	nomeHotel varchar(256), 
+	userid varchar(256) not null, 
+	cnpj char(18) not null, 
 	cidade varchar(256),
 	PRIMARY KEY(cnpj),
-	FOREIGN KEY(userid) REFERENCES LOGIN(id)
+	FOREIGN KEY(userid) REFERENCES LOGIN(email) ON DELETE CASCADE
 );
 
 CREATE TABLE SITE(
-	userid bigint not null,
-	url varchar(256), 
-	nomeSite varchar(256), 
+	userid varchar(256) not null,
+	url varchar(256) not null, 
 	telefone char(10),
 	PRIMARY KEY(url),
-	FOREIGN KEY(userid) REFERENCES LOGIN(id)
+	FOREIGN KEY(userid) REFERENCES LOGIN(email) ON DELETE CASCADE
 );
 
 CREATE TABLE PROMO(
 	preco float not null,
 	dataInicio date,
 	dataFim date,
-	urlPromo varchar(256),
-	cnpjPromo char(18),
+	urlPromo varchar(256) not null,
+	cnpjPromo char(18) not null,
 	FOREIGN KEY(urlPromo) REFERENCES SITE(url),
 	FOREIGN KEY(cnpjPromo) REFERENCES HOTEL(cnpj),
 	PRIMARY KEY(urlPromo, cnpjPromo)
