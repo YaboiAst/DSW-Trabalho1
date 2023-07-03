@@ -1,6 +1,7 @@
 <%@ page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ page isELIgnored="false"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -10,7 +11,7 @@
     </head>
     <body>
     <%String contextPath = request.getContextPath().replace("/", "");%>
-        <h1>Autenticação de Cliente</h1>
+        <h1><fmt:message key="login.title"/></h1>
         <c:if test="${mensagens.existeErros}">
             <div id="erro">
                 <ul>
@@ -28,7 +29,7 @@
                                value="${param.email}"/></td>
                 </tr>
                 <tr>
-                    <th>Senha: </th>
+                    <th><fmt:message key="login.pswd"/></th>
                     <td><input type="password" name="senha" value="${param.senha}" /></td>
                 </tr>
                 <tr>
@@ -38,6 +39,6 @@
                 </tr>
             </table>
         </form>
-        <a href="/<%=contextPath%>">Menu Principal</a>
+        <a href="/<%=contextPath%>"><fmt:message key="main.menu"/></a>
     </body>
 </html>

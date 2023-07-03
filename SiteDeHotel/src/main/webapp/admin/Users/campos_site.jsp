@@ -2,15 +2,16 @@
 	pageEncoding="UTF-8"%>
 <%@ page isELIgnored="false"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
 <table border="2">
 	<caption>
 		<c:choose>
 			<c:when test="${Cliente != null}">
-                            Edição
+                            <fmt:message key="main.edition"/>
                         </c:when>
 			<c:otherwise>
-                            Cadastro
+                            <fmt:message key="main.cadastro"/>
                         </c:otherwise>
 		</c:choose>
 	</caption>
@@ -18,7 +19,7 @@
 		<input type="hidden" name="id" value="${Cliente.id}" />
 	</c:if>
 	<tr>
-		<td><label for="nome">Nome</label></td>
+		<td><label for="nome"><fmt:message key="main.name"/></label></td>
 		<td><input type="text" id="nome" name="nome" size="50"
 			required value="${Site.nome}" /></td>
 	</tr>
@@ -28,7 +29,7 @@
 			value="${Cliente.email}" /></td>
 	</tr>
 	<tr>
-		<td><label for="senha">Senha</label></td>
+		<td><label for="senha"><fmt:message key="main.pswd"/></label></td>
 		<td><input type="text" id="senha" name="senha" size="50" required
 			value="${Cliente.senha}" /></td>
 	</tr>
@@ -38,7 +39,7 @@
 			value="${Site.Url}" /></td>
 	</tr>
 	<tr>
-		<td><label for="Telefone">Telefone</label></td>
+		<td><label for="Telefone"><fmt:message key="main.phone"/></label></td>
 		<td><input type="text" id="Telefone" name="Telefone" size="12" required
 			value="${Site.Telefone}" /></td>
 	</tr>

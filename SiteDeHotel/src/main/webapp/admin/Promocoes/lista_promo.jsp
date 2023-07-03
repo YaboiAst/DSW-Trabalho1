@@ -2,9 +2,10 @@
 	pageEncoding="UTF-8"%>
 <%@ page isELIgnored="false"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <html>
 <head>
-<title>PromocoesHotel</title>
+<title><fmt:message key="page.title"/></title>
 </head>
 <script>
 	function filterFunction() {
@@ -43,16 +44,16 @@
 		String contextPath = request.getContextPath().replace("/", "");
 	%>
 	<div align="center">
-		<h1>Gerenciamento de promocaos</h1>
+		<h1><fmt:message key="promo.manage"/></h1>
 		<h2>
-			<a href="/<%=contextPath%>">Menu Principal</a>
+			<a href="/<%=contextPath%>"><fmt:message key="main.menu"/></a>
 			<c:if test="${Cliente != null }">
 				<c:if test="${Cliente.nome == 'CLIENTE'}">
-					<a href="/<%=contextPath%>/cliente/">Menu Cliente</a>
+					<a href="/<%=contextPath%>/cliente/"><fmt:message key="client.menu"/></a>
 				</c:if>
 				<c:if test="${Cliente.nome == 'hotel'}">
-					<a href="${pageContext.request.contextPath}/hotel/">Menu hotel</a>
-					<a href="${pageContext.request.contextPath}/promocao/cadastro">Adicione Novo promocao</a>
+					<a href="${pageContext.request.contextPath}/hotel/"><fmt:message key="hotel.page"/></a>
+					<a href="${pageContext.request.contextPath}/promocao/cadastro"><fmt:message key="promo.add"/></a>
 				</c:if>
 			</c:if>
 		</h2>
@@ -61,17 +62,17 @@
 	<div align="center">
 	<input type="text" id="modelFilter" onkeyup="filterFunction()" placeholder ="Procure pelo modelo">
 		<table id="tabelapromocao" border="1">
-			<caption>Lista de promocaos</caption>
+			<caption><fmt:message key="promo.list"/></caption>
 			<tr>
 				<th>ID</th>
-				<th>urlSiteReservas</th>
+				<th>urlSite</th>
 				<th>cnpjHotel</th>
-				<th>dataInicial</th>
-				<th>dataFinal</th>
-				<th>preco</th>
+				<th><fmt:message key="promo.start"/></th>
+				<th><fmt:message key="promo.end"/></th>
+				<th><fmt:message key="promo.price"/></th>
 				<c:choose>
 					<c:when test="${Cliente != null}">
-						<th>Ações</th>
+						<th><fmt:message key="main.action"/></th>
 					</c:when>
 				</c:choose>
 			</tr>
@@ -85,10 +86,10 @@
 					<td>${promocao.preco}</td>
 					<c:if test="${Cliente != null }">
 						<c:if test="${Cliente.nome == 'CLIENTE'}">
-							<td><a href="/<%=contextPath%>/propostas/cadastro?id=${promocao.id}">Fazer promocao</a></td>
+							<td><a href="/<%=contextPath%>/propostas/cadastro?id=${promocao.id}"><fmt:message key="promo.add"/></a></td>
 						</c:if>
 						<c:if test="${Cliente.nome == 'hotel'}">
-							<td><a href="/<%= contextPath%>/hotel/listaProposta?id=${promocao.id}">promocoes</a></td>
+							<td><a href="/<%= contextPath%>/hotel/listaProposta?id=${promocao.id}"><fmt:message key="promo.title"/></a></td>
 						</c:if>
 					</c:if>
 				</tr>

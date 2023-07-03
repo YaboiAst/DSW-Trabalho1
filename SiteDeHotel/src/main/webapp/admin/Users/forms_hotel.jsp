@@ -2,17 +2,18 @@
 	pageEncoding="UTF-8"%>
 <%@ page isELIgnored="false"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <html>
 
 <head>
-<title>PromocoesHotel</title>
+<title><fmt:message key="page.title"/></title>
 </head>
 
 <body>
 	<div align="center">
-		<h1>Gerenciamento de Hoteis</h1>
+		<h1><fmt:message key="hotel.manage"/></h1>
 		<h2>
-			<a href="lista">Lista de Hoteis</a>
+			<a href="lista"><fmt:message key="hotel.list"/></a>
 		</h2>
 	</div>
 	<div align="center">
