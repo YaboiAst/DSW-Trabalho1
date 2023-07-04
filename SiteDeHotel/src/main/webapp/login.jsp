@@ -21,12 +21,11 @@
                 </ul>
             </div>
         </c:if>
-        <form method="post" action="index.jsp">
+        <form method="post" action="login.jsp">
             <table>
                 <tr>
                     <th>Login: </th>
-                    <td><input type="text" name="email"
-                               value="${param.email}"/></td>
+                    <td><input type="text" name="email" value="${param.email}"/></td>
                 </tr>
                 <tr>
                     <th><fmt:message key="login.pswd"/></th>
