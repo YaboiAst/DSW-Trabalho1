@@ -9,7 +9,7 @@
     <body>
     	<%
 		String contextPath = request.getContextPath().replace("/", "");
-		%>
+        %>
         <a href="login.jsp">Fazer Login</a>
         <a href="/<%=contextPath%>/Hotel/lista">Listar Hoteis</a>
     </body>
